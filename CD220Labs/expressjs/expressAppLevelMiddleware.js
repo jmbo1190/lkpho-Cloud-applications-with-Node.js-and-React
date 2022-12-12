@@ -17,3 +17,13 @@ app.listen(3333, () => {
     console.log(`listening at http://localhost:3333`)
 });
 
+// test in terminal:
+//   node express AppLevelMiddleware.js 
+// listening at http://localhost:3333
+
+// in other terminal:
+//   curl localhost:3333/home
+//   This user cannot login %     
+//
+//   curl "http://localhost:3333/home?password=pwd123"
+//   Hello World!%                           
