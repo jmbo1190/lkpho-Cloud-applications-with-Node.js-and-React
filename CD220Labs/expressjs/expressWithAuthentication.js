@@ -92,6 +92,31 @@ app.get("/auth/get_message", (req,res) => {
   return res.status(200).json({message: "Hello, You are an authenticated user. Congratulations!"});
 })
 
-const PORT =5000;
+const PORT = 5001; // port 5000 used by system in MacOS;
 
 app.listen(PORT,()=>console.log("Server is running"));
+
+
+// Test this program 
+//  1. install new package dependenciess
+//      npm install --save jsonwebtoken express-session            // npm ERR! conflicting dependency
+//      npm install --save jsonwebtoken express-session --force    // npm WARN ERESOLVE overriding peer dependency
+
+//  2. run server
+//      node expressWithAuthentication.js
+
+//  3. attempt to access endpoint unauthenticated
+//      curl localhost:5001/auth/get_message    // {"message":"User not logged in"}
+
+//  4. run postman app locally, create POST request with username and password parameters 
+//     e.g. to http://localhost:5001/register?username=user69&password=pwd69
+//     Response body: { "message": "User successfully registred. Now you can login" }
+
+//  5. in postman, make POST request to "/login" keeping same parameters
+//     e.g. http://localhost:5001/login?username=user69&password=pwd69
+//     Response body: User successfully logged in
+
+//  6. iin postman, make GET request to /auth/get_message
+//     i.e. http://localhost:5001/auth/get_message
+//     Response body: {"message":"Hello, You are an authenticated user. Congratulations!"}
+
