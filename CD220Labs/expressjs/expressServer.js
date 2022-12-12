@@ -4,6 +4,7 @@ const app = new express();
 let loginDetails = [];
 
 app.get("/",(req,res)=>{
+    //console.log(req);
     res.send("Welcome to the express server")
 })
 
@@ -12,6 +13,7 @@ app.get("/loginDetails",(req,res)=>{
 })
 
 app.post("/login/:name",(req,res)=>{
+    console.log(req.params);
     loginDetails.push({"name":req.params.name,"login_time":new Date()});
     res.send(req.params.name + ", You are logged in!")
 })
@@ -30,6 +32,12 @@ app.get("/fetchMonth/:num",(req,res)=>{
         res.send(months[num-1])
     }
 
+})
+
+// Adding my own endpoint
+app.get("/fetchCurrent/Month/",(req,res)=>{
+    let dt = new Date();
+    res.send(months[dt.getMonth()]);
 })
 
 app.listen(3333, () => {
